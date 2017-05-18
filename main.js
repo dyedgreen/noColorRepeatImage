@@ -19,8 +19,6 @@
 * @return {objectORbool} (Returns {r,g,b}. Returns false, if no color is found.)
 */
 function searchColor(color, test) {
-  // Catch mallformed evals
-  if (typeof eval !== 'function') return false;
   // Search the rgb color space in positive direction
   var lR = 255, fR = 0;
   var lG = 255, fG = 0;
