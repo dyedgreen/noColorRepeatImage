@@ -1,0 +1,158 @@
+/* RESET */
+
+* {
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+
+  font-family: 'Montserrat', sans-serif;
+
+  background: none;
+}
+html {
+  background:#fafafa;
+}
+
+
+/* PAGE STYLES */
+h1, h2, h3 {
+  width:90%;
+  max-width:800px;
+  height:auto;
+  display:block;
+  margin:50px auto 0 auto;
+
+  font-size:60px;
+  font-weight:600;
+  text-align:center;
+
+  color:#50D8D7;
+}
+h2 {
+  font-size:40px;
+  color:#E01F5F;
+}
+h3 {
+  font-size:15px;
+}
+h3 a {
+  font-size:15px;
+  text-decoration:none;
+  color:#50D8D7;
+}
+h3 a:hover {
+  text-decoration:underline;
+}
+
+input {
+  width:500px;
+  height:100px;
+  max-width:90%;
+  display:block;
+  margin:50px auto 0 auto;
+
+  font-size:50px;
+  font-weight:400;
+  line-height:100px;
+  text-align:center;
+
+  color:#E01F5F;
+  border:none;
+}
+
+.button {
+  width:500px;
+  height:50px;
+  max-width:90%;
+  display:block;
+  margin:0 auto;
+
+  font-size:20px;
+  font-weight:600;
+  line-height:50px;
+  text-decoration:none;
+  text-transform:uppercase;
+  text-align:center;
+
+  color:#fff;
+  background:#E01F5F;
+
+  transition:.1s;
+  cursor:pointer;
+}
+.button:hover {
+  background:#50D8D7;
+}
+
+p {
+  width:500px;
+  height:4px;
+  max-width:90%;
+  padding:0 10px;
+  display:block;
+  margin:25px auto;
+
+  font-size:20px;
+  font-weight:400;
+  line-height:4px;
+  text-decoration:none;
+  text-transform:uppercase;
+  text-align:center;
+
+  border-left:200px solid #50D8D7;
+  border-right:200px solid #50D8D7;
+  color:#50D8D7;
+}
+
+.image {
+  width:500px;
+  height:auto;
+  max-width:90%;
+  display:block;
+  position:relative;
+  margin:50px auto;
+
+  background:#fff;
+  box-shadow:0 1px 15px 5px rgba(0,0,0,0.1);
+}
+
+.image img {
+  width:100%;
+  height:auto;
+  display:block;
+
+  image-rendering: crisp-edges;
+}
+
+.image .loading {
+  width:100%;
+  height:60px;
+  display:block;
+  position:absolute;
+  top:calc(50% - 30px);
+  left:0;
+  right:auto; bottom:auto;
+
+  text-align:center;
+
+  pointer-events:none;
+}
+.image .loading span {
+  width:auto;
+  height:60px;
+  padding:0 10px;
+  display:inline-block;
+
+  font-size:50px;
+  font-weight:600;
+  text-align:center;
+  text-transform:uppercase;
+  line-height:60px;
+
+  color:#E01F5F;
+  background:#fff;
+}
+
+.hidden {
+  display:none!Important;
+}

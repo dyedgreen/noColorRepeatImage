@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <!-- STUFF -->
+    <meta charset="utf-8">
+    <!-- STYLES / FONTS -->
+    <link href="./main.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+    <!-- INFO -->
+    <title>No Color Repeat</title>
+  </head>
+
+  <body>
+    <!-- TITLE & URL INPUT -->
+    <h1>NO COLOR REPEAT IMAGE</h1>
+    <!-- IMAGE INPUT -->
+    <span id="form">
+      <input id="url" type="text" value="" placeholder="Enter image url...">
+      <a id="create" href="javascript:void(0)" class="button">Create Image From Url</a>
+      <p>Or</p>
+      <input id="createFile" name="createFile" type="file" accept="image/*" style="display:none;">
+      <label for="createFile" class="button">Create Image From File</label>
+      <p>Or</p>
+      <a id="createUnsplash" href="javascript:void(0)" class="button">Use Unsplash Image</a>
+    </span>
+    <!-- LOADING -->
+    <h2 id="loading" class="hidden">Loading ...</h2>
+    <!-- IMAGE OUTPUT -->
+    <div id="displayHolder" class="image hidden">
+      <img id="display" src="">
+      <span id="progress" class="loading"><span>0%</span></span>
+    </div>
+    <!-- IT'S ME :) -->
+    <h3>Made by <a href="https://mastodon.social/@dyedgreen" target="_blank">Dyedgreen</a> ✌️</h3>
+  </body>
+
+  <script src="./main.js" type="application/javascript" async></script>
+
+</html>
