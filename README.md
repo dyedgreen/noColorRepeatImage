@@ -7,7 +7,7 @@ be rather slow and images are restricted to a max 300x300 px.
 
 The nearest color search is using an naive bruteforce approach.
 However it was optimized for speed a little and tries as little
-options as neccessary. If you want to know how it works exactely,
+options as necessary. If you want to know how it works exactly,
 feel free to take a look at `main.js`.
 
 Have a good day ✌️
