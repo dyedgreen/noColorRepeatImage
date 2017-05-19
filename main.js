@@ -13,59 +13,85 @@
 * that matches an (arbitrary) condition.
 * This uses a very naive search approach
 * and can be very slow.
+* NOTE:
+* l = limit; f = force; d = decision; o = offset;
 *
 * @param {object} color (Format: {r,g,b})
 * @param {function} test (takes the new color as {r,g,b} has to retunr true/false)
 * @return {objectORbool} (Returns {r,g,b}. Returns false, if no color is found.)
 */
 function searchColor(color, test) {
-  // Search the rgb color space in positive direction
-  var lR = 255, fR = 0;
-  var lG = 255, fG = 0;
-  var lB = 255, fB = 0;
+  // Search the rgb color space in around color
+  var lR = 255 - color.r, fR = 0, dR = 0, oR = 0, r = 0;
+  var lG = 255 - color.g, fG = 0, dG = 0, oG = 0, g = 0;
+  var lB = 255 - color.b, fB = 0, dB = 0, oB = 0, b = 0;
   var newColor = {r:0,g:0,b:0};
-  for (r = 0; r < 256; r ++, lR --) {
-  for (g = 0; g < 256; g ++, lG --) {
-  for (b = 0; b < 256; b ++, lB --) {
+  for (r = 1; r < 257; r ++) {
+  for (g = 1; g < 257; g ++) {
+  for (b = 1; b < 257; b ++) {
     // Generate the offsets
     // R
-    if (r % 2 === 0) {
+    if (dR === 1) {
+      fR = r + oR;
+    } else if (dR === 2) {
+      fR = oR - r;
+    } else if (r % 2 === 0) {
       fR = r/2;
       if (fR > lR) {
         fR = -fR;
+        dR = 2; // Overflow top (offset is already set neg!)
+        oR = r/2;
       }
     } else {
       fR = (r-1)/2;
-      if (fR > r) {
+      if (fR > color.r) {
         fR ++;
+        dR = 1; // Overflow bottom
+        oR = (1-r) / 2;
       } else {
         fR = -fR;
       }
     }
     // G
-    if (g % 2 === 0) {
+    if (dG === 1) {
+      fG = g + oG;
+    } else if (dG === 2) {
+      fG = oG - g;
+    } else if (g % 2 === 0) {
       fG = g/2;
       if (fG > lG) {
-        fG = -fR;
+        fG = -fG;
+        dG = 2;
+        oG = g/2;
       }
     } else {
       fG = (g-1)/2;
-      if (fG > g) {
+      if (fG > color.g) {
         fG ++;
+        dG = 1;
+        oG = (1-g) / 2;
       } else {
         fG = -fG;
       }
     }
     // B
-    if (b % 2 === 0) {
+    if (dB === 1) {
+      fB = b + oB;
+    } else if (dB === 2) {
+      fB = oB - b;
+    } else if (b % 2 === 0) {
       fB = b/2;
       if (fB > lB) {
         fB = -fB;
+        dB = 2;
+        oB = b/2;
       }
     } else {
       fB = (b-1)/2;
-      if (fB > b) {
+      if (fB > color.b) {
         fB ++;
+        dB = 1;
+        oB = (1-b) / 2;
       } else {
         fB = -fB;
       }
