@@ -209,7 +209,7 @@ function load(url, callback) {
 */
 function filterCanvas(canvas, feedback, callback) {
   // Needed variables
-  var used = [];
+  var used = {};
   var lastFeedback = -1;
   var startTime = Date.now();
   var imgData = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
@@ -221,18 +221,14 @@ function filterCanvas(canvas, feedback, callback) {
     // Find the current color and update it
     var color = { r: pix[i], g: pix[i+1], b: pix[i+2] };
     var newColor = searchColor(color, function(c) {
-      // Test is color exists (using for loop)
-      var l = used.length;
+      // Test is color exists
       var cs = c.r + 1000 * c.g + 1000000 * c.b;
-      for (var i = 0; i < l; i ++) {
-        if (used[i] === cs) return false;
-      }
-      return true;
+      return !!used[cs];
     }, true);
     // Assign the new color
     if (newColor !== false) {
       // By giving each value a different magnitude, we don't need to convert to string
-      used.push(newColor.r + 1000 * newColor.g + 1000000 * newColor.b);
+      used[newColor.r + 1000 * newColor.g + 1000000 * newColor.b] = true;
       pix[i] = newColor.r;
       pix[i+1] = newColor.g;
       pix[i+2] = newColor.b;
